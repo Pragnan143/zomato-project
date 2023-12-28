@@ -9,14 +9,14 @@ import {
 const Router = express.Router();
 
 /**
-  Route     /
+  Route     /new
   Des       create New Food
   Params    none
   Access    Public
   Method    POST
  */
 
-Router.post("/", async (req, res) => {
+Router.post("/new", async (req, res) => {
   try {
     const newFoods = await FoodModel.create(req.body);
     return res.status(200).json({ newFoods, status: "success" });

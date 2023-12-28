@@ -1,7 +1,7 @@
 import express from "express";
 import { RestrauntModel } from "../../database/restarunts";
 import { ImageModel } from "../../database/images";
-
+import { MenuModel } from "../../database/menu";
 const Router = express.Router();
 
 /**
@@ -12,6 +12,14 @@ const Router = express.Router();
   Method    POST
  */
 
+Router.post("/new", async (req, res) => {
+  try {
+    const newMenu = await MenuModel.create(req.body);
+    return res.status(200).json({ newMenu, status: "success" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 /**
   Route     /list/:_id
   Des        get the menu list based on restarunt id

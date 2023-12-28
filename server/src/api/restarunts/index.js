@@ -17,9 +17,8 @@ const Router = express.Router();
 
 Router.post("/new", async (req, res) => {
   try {
-    const { restaruntData } = req.body;
-    const newRestarunts = await RestrauntModel.create({ restaruntData });
-    return res.status(200).json({ newRestarunts });
+    const newRestarunt = await RestrauntModel.create(req.body);
+    return res.status(200).json({ newRestarunt, status: "success" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
