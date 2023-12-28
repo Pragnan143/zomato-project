@@ -1,7 +1,12 @@
 import React from "react";
+import DiningCarousel from "./DiningCarousel";
 
 const DinOut = () => {
-  return <div>Dining</div>;
+  return (
+    <>
+      <DiningCarousel />
+    </>
+  );
 };
 
 export default DinOut;
