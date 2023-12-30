@@ -1,13 +1,13 @@
 import React from "react";
-// import { TiStarOutline } from "react-icons/ti";
-// import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
-// import { BiBookmarkPlus } from "react-icons/bi";
+import { TiStarOutline } from "react-icons/ti";
+import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
+import { BiBookmarkPlus } from "react-icons/bi";
 import Navbar from "../Components/Navbar";
-// import ImageGrid from "../Components/Restarunts/ImageGrid";
-// import InfoButton from "../Components/Restarunts/InfoButton";
-// import RestaruntInfo from "../Components/Restarunts/RestaruntInfo";
-// import Tabs from "../Components/Restarunts/Tabs";
-// import CartContainer from "../ComponentsCart/CartContainers";
+import ImageGrid from "../Components/Restarunts/ImageGrid";
+import InfoButton from "../Components/Restarunts/InfoButton";
+import RestaruntInfo from "../Components/Restarunts/RestaruntInfo";
+import Tabs from "../Components/Restarunts/Tabs";
+import CartContainer from "../Components/Cart/CartContainers";
 
 const RestaruntLayout =
   (Component) =>
@@ -16,8 +16,8 @@ const RestaruntLayout =
       <>
         <Navbar />
         <Component {...props} />
-        {/* <div className="container mx-auto px-4 lg:px-20">
-          <ImageGrid images={} /> 
+        <div className="container mx-auto px-4 lg:px-20">
+          <ImageGrid />
           <RestaruntInfo
             name=""
             restaruntRating=""
@@ -46,7 +46,7 @@ const RestaruntLayout =
           </div>
           <Component {...props} />
           <CartContainer />
-        </div> */}
+        </div>
       </>
     );
   };
