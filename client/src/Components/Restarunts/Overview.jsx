@@ -13,10 +13,10 @@ import ReviewCard from "../Reviews/ReviewCard";
 import MapView from "./MapView";
 
 // redux
-// import { useSelector, useDispatch } from "react-redux";
-// import { useEffect } from "react";
-// import { getReview } from "../../redux/reducers/review/review.action";
-// import { getImage } from "../../redux/reducers/image/image.action";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getReview } from "../../redux/reducers/review/review.action";
+import { getImage } from "../../redux/reducers/image/image.action";
 
 const Overview = () => {
   const [restaurant, setRestaurant] = useState({
@@ -36,31 +36,31 @@ const Overview = () => {
   const [reviews, setReviews] = useState([{}, {}, {}]);
 
   const { id } = useParams;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const reduxState = useSelector(
-  //   (globalState) => globalState.restaurant.selectedRestaurant.restaurant
-  // );
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
 
-  // useEffect(() => {
-  //   if (reduxState) {
-  //     setRestaurant(reduxState);
-  //   }
-  // }, [reduxState]);
+  useEffect(() => {
+    if (reduxState) {
+      setRestaurant(reduxState);
+    }
+  }, [reduxState]);
 
-  // useEffect(() => {
-  //   if (reduxState) {
-  //     dispatch(getImage(reduxState?.menuImages)).then((data) => {
-  //       const images = [];
-  //       data.payload.images.map(({ location }) => images.push(location));
-  //       setMenuImages(images);
-  //     });
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.menuImages)).then((data) => {
+        const images = [];
+        data.payload.images.map(({ location }) => images.push(location));
+        setMenuImages(images);
+      });
 
-  //     dispatch(getReview(reduxState?._id)).then((data) => {
-  //       setReviews(data.payload.reviews);
-  //     });
-  //   }
-  // }, [reduxState]);
+      dispatch(getReview(reduxState?._id)).then((data) => {
+        setReviews(data.payload.reviews);
+      });
+    }
+  }, [reduxState]);
 
   const slideConfig = {
     slidesPerView: 1,

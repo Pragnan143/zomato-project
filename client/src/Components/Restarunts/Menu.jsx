@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import getImage from "../../redux/reducers/image/image.action";
+import { useDispatch, useSelector } from "react-redux";
+import getImage from "../../redux/reducers/image/image.action";
 
 // components
 import MenuCollection from "./MenuCollection";
@@ -13,21 +13,21 @@ const Menu = () => {
     "https://b.zmtcdn.com/data/menus/375/19011375/08241f07614e38f81c7bb0fe4b7b3d10.jpg",
   ]);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const reduxState = useSelector(
-  //   (globalState) => globalState.restaurant.selectedRestaurant.restaurant
-  // );
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
 
-  // useEffect(() => {
-  //   if (reduxState) {
-  //     dispatch(getImage(reduxState?.menuImages)).then((data) => {
-  //       const images = [];
-  //       data.payload.images.map(({ location }) => images.push(location));
-  //       setMenus(images);
-  //     });
-  //   }
-  // }, [reduxState]);
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.menuImages)).then((data) => {
+        const images = [];
+        data.payload.images.map(({ location }) => images.push(location));
+        setMenus(images);
+      });
+    }
+  }, [reduxState]);
 
   return (
     <div className="flex flex-wrap gap-3">

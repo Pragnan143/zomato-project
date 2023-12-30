@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineCompass } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 
@@ -8,8 +8,8 @@ import FoodList from "../OrderOnline/FoodList";
 import MenuListContainer from "../OrderOnline/MenuListContainer";
 
 // redux
-// import { useSelector, useDispatch } from "react-redux";
-// import { getFoodList } from "../../redux/reducers/food/food.action";
+import { useSelector, useDispatch } from "react-redux";
+import { getFoodList } from "../../redux/reducers/food/food.action";
 
 const OrderOnline = () => {
   const [menu, setMenu] = useState([
@@ -83,18 +83,18 @@ const OrderOnline = () => {
     return;
   };
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const restaurant = useSelector(
-  //   (globaldata) => globaldata.restaurant.selectedRestaurant.restaurant
-  // );
+  const restaurant = useSelector(
+    (globaldata) => globaldata.restaurant.selectedRestaurant.restaurant
+  );
 
-  // useEffect(() => {
-  //   restaurant &&
-  //     dispatch(getFoodList(restaurant.menu)).then((data) => {
-  //       setMenu(data.payload.menus.menus);
-  //     });
-  // }, [restaurant]);
+  useEffect(() => {
+    restaurant &&
+      dispatch(getFoodList(restaurant.menu)).then((data) => {
+        setMenu(data.payload.menus.menus);
+      });
+  }, [restaurant]);
 
   return (
     <>

@@ -6,30 +6,30 @@ import AddReviewCard from "../Reviews/AddReviewCard";
 import { useParams } from "react-router-dom";
 
 // redux
-// import { useDispatch, useSelector } from "react-redux";
-// import { getReview } from "../../redux/reducers/review/review.action";
+import { useDispatch, useSelector } from "react-redux";
+import { getReview } from "../../redux/reducers/review/review.action";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([{}]);
 
   const { id } = useParams();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const updatedReviews = useSelector(
-  //   (globalState) => globalState.review.reviews.reviews
-  // );
+  const updatedReviews = useSelector(
+    (globalState) => globalState.review.reviews.reviews
+  );
 
-  // useEffect(() => {
-  //   dispatch(getReview(id)).then((data) => {
-  //     setReviews(data.payload.reviews);
-  //   });
-  // }, []);
+  useEffect(() => {
+    dispatch(getReview(id)).then((data) => {
+      setReviews(data.payload.reviews);
+    });
+  }, []);
 
-  // useEffect(() => {
-  //   if (updatedReviews) {
-  //     setReviews(updatedReviews);
-  //   }
-  // }, [updatedReviews]);
+  useEffect(() => {
+    if (updatedReviews) {
+      setReviews(updatedReviews);
+    }
+  }, [updatedReviews]);
 
   return (
     <div className="w-full h-full flex-col md:flex md:flex-row relative gap-5">
